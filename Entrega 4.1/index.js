@@ -2,6 +2,8 @@ const { response } = require('express');
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
+const fileUpload = require('express-fileupload');
+const bodyParser = require('body-parser');
 
 //Configuraciones
 app.set('port', process.env.PORT || 3000);
@@ -29,6 +31,13 @@ app.get('/user', (req, res) => {
         }
     );
 })
+
+
+app.use(fileUpload({
+    createParentPath: true
+}));
+
+
 
 //Iniciando el servidor, escuchando...
 app.listen(app.get('port'),()=>{
