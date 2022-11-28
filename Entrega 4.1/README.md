@@ -23,3 +23,12 @@ Nivell 3
 
 - Exercici 1
   Crea una petició GET a l'endpoint /pokemon/{id} que rebi un número de Pokémon, faci una cerca al Pokémon API i retorni el nom del Pokémon, la seva alçada i el seu pes.
+
+
+
+Per executar el servidor:
+node 'Entrega 4.1'/index.js
+
+Per instalar els paquets necessaris:
+npm i express morgan
+npm i nodemon -D
