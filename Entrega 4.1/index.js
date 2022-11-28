@@ -1,4 +1,3 @@
-const { response } = require('express');
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
@@ -9,6 +8,9 @@ const bodyParser = require('body-parser');
 app.set('port', process.env.PORT || 3000);
 app.set('json spaces', 2)
 
+app.use(fileUpload({
+    createParentPath: true
+}));
 
 app.get('/', (req, res) => {  
     res.send(`Llistat d'enpoints:\n/user -> retorna un json amb el teu nom, edat i l'URL des d'on es fa la petició.\n/upload -> puja al servidor un arxiu de tipus png/jpg/gif amb una petició POST i que retorni un missatge d'error en cas que l'extensió de l'arxiu no coincideixi amb aquestes.`);
@@ -33,10 +35,35 @@ app.get('/user', (req, res) => {
 })
 
 
-app.use(fileUpload({
-    createParentPath: true
-}));
+app.post('/upload', async (req, res) => {
+    try {
+        if(!req.files) {
+            res.send({
+                status: false,
+                message: 'No file uploaded'
+            });
+        } else {
+            //Use the name of the input field (i.e. "avatar") to retrieve the uploaded file
+            let file = req.files.file;
+            
+            //Use the mv() method to place the file in the upload directory (i.e. "uploads")
+            file.mv('./files/' + file.name);
 
+            //send response
+            res.send({
+                status: true,
+                message: 'File is uploaded',
+                data: {
+                    name: file.name,
+                    mimetype: file.mimetype,
+                    size: file.size
+                }
+            });
+        }
+    } catch (err) {
+        res.status(500).send(err);
+    }
+});
 
 
 //Iniciando el servidor, escuchando...
