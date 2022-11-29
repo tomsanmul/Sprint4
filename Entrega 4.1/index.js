@@ -13,7 +13,7 @@ app.use(fileUpload({
 }));
 
 app.get('/', (req, res) => {  
-    res.send(`Llistat d'enpoints:\n/user -> retorna un json amb el teu nom, edat i l'URL des d'on es fa la petició.\n/upload -> puja al servidor un arxiu de tipus png/jpg/gif amb una petició POST i que retorni un missatge d'error en cas que l'extensió de l'arxiu no coincideixi amb aquestes.`);
+    res.send(`Llistat d'enpoints:<br>/user -> retorna un json amb el teu nom, edat i l'URL des d'on es fa la petició.<br>/upload -> puja al servidor un arxiu de tipus png/jpg/gif amb una petició POST i que retorni un missatge d'error en cas que l'extensió de l'arxiu no coincideixi amb aquestes.`);
 });
 
 
