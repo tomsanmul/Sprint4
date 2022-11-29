@@ -24,19 +24,23 @@ app.get('/', (req, res) => {
 
 
 app.get('/user', (req, res) => {
+    try {
+        const protocol = req.protocol;
+        const host = req.hostname;
+        const url = req.originalUrl;
+        const port = app.get('port');
+        const URL = `${protocol}://${host}:${port}${url}`
 
-    const protocol = req.protocol;
-    const host = req.hostname;
-    const url = req.originalUrl;
-    const port = app.get('port');
-    const URL = `${protocol}://${host}:${port}${url}`
+        res.json({
+            "Nom": "Tomas",
+            "Edat": "44",
+            "URL": URL
+        });
+    } catch (err) {
+        res.status(500).send(err);
+    }
 
-    res.json({
-        "Nom": "Tomas",
-        "Edat": "44",
-        "URL": URL
-    });
-})
+});
 
 
 
@@ -85,16 +89,14 @@ app.post('/time', async (req, res) => {
                 status: false,
                 message: 'No file JSON received'
             });
-        } 
-        else
-        {
+        } else {
             let file = req.files.file;
             if (file.mimetype == "application/json") {
                 // const usuari = file.data.json.user;
 
                 const fechaHoy = Date.now();
                 const hoy = new Date(fechaHoy);
-               
+
 
                 res.json({
                     "Date": hoy.toLocaleDateString(),
