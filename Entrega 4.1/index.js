@@ -1,11 +1,10 @@
 const express = require('express');
-const morgan = require('morgan');
 const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
-app.use(cors());
+
 
 //Configuraciones
 app.set('port', process.env.PORT || 3000);
@@ -82,7 +81,7 @@ app.post('/upload', async (req, res) => {
 });
 
 
-app.post('/time', async (req, res) => {
+app.post('/time', cors(), async (req, res) => {
     try {
         if (!req.files) {
             res.send({
@@ -92,17 +91,18 @@ app.post('/time', async (req, res) => {
         } else {
             let file = req.files.file;
             if (file.mimetype == "application/json") {
-                // const usuari = file.data.json.user;
 
                 const fechaHoy = Date.now();
                 const hoy = new Date(fechaHoy);
-
+                let contingutfitxer = JSON.parse(file.data.toString('ascii'));
 
                 res.json({
                     "Date": hoy.toLocaleDateString(),
                     "Time": hoy.toLocaleTimeString(),
-                    "User": req.body //file.data.json()
+                    "User": contingutfitxer.user,
+                    "Nom" : contingutfitxer.nom
                 });
+
             } else {
                 res.send({
                     status: false,
