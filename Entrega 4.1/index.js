@@ -43,7 +43,7 @@ app.get('/user', (req, res) => {
 
 
 
-app.post('/img', async (req, res) => {
+app.post('/upload', async (req, res) => {
     try {
         if (!req.files) {
             res.send({
@@ -55,7 +55,7 @@ app.post('/img', async (req, res) => {
             let file = req.files.file;
             if ((file.mimetype == "image/png") || (file.mimetype == "image/jpeg") || (file.mimetype == "image/gif")) {
                 //Use the mv() method to place the file in the upload directory (i.e. "uploads")
-                file.mv('./uploads/' + file.name);
+                file.mv('/Entrega 4.1/img/' + file.name);
                 //send response
                 res.send({
                     status: true,
