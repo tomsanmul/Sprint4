@@ -1,23 +1,14 @@
-const express = require('express');
-const fileUpload = require('express-fileupload');
-const cors = require('cors');
-
-const app = express();
-
-//Configuraciones
-app.set('port', process.env.PORT || 3000);
-app.set('json spaces', 2)
-
-app.use(fileUpload({
-    createParentPath: true
-}));
-
-
+const app = require("../config/config.js");
 
 // ENDPOINTS: 
 
 app.get('/', (req, res) => {
-    res.send(`Llistat d'enpoints:<br>/user -> retorna un json amb el teu nom, edat i l'URL des d'on es fa la petició.<br>/upload -> puja al servidor un arxiu de tipus png/jpg/gif amb una petició POST i que retorni un missatge d'error en cas que l'extensió de l'arxiu no coincideixi amb aquestes.`);
+    res.send({
+        "Llista d'EndPoints:": "",
+        "/user": "retorna un json amb el teu nom, edat i l'URL des d'on es fa la petició.",
+        "/upload": "puja al servidor un arxiu de tipus png/jpg/gif amb una petició POST i que retorni un missatge d'error en cas que l'extensió de l'arxiu no coincideixi amb aquestes.",
+        "/time": "rep per POST com a paràmetre un JSON amb el nom d'usuari i retorna un objecte JSON que conté l'hora i data actual. Inclou un middleware que afegeix la capçalera Cache-control: no-cache. Habilita CORS en les respostes mitjançant Express"
+    })
 });
 
 
@@ -53,7 +44,7 @@ app.post('/upload', async (req, res) => {
             let file = req.files.file;
             if ((file.mimetype == "image/png") || (file.mimetype == "image/jpeg") || (file.mimetype == "image/gif")) {
                 //Use the mv() method to place the file in the upload directory (i.e. "uploads")
-                file.mv('./Entrega 4.1/img/' + file.name);
+                file.mv('./img/' + file.name);
                 //send response
                 res.send({
                     status: true,
@@ -78,8 +69,8 @@ app.post('/upload', async (req, res) => {
     }
 });
 
-
-app.post('/time', cors(), async (req, res) => {
+//app.post('/time', cors(), async (req, res) => {
+app.post('/time', async (req, res) => {
     try {
         if (!req.files) {
             res.send({
@@ -114,6 +105,4 @@ app.post('/time', cors(), async (req, res) => {
 });
 
 
-module.exports = {
-    pruebas
-};
+module.exports = app;
