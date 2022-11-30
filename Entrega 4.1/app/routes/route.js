@@ -72,7 +72,7 @@ app.post('/upload', async (req, res) => {
 //app.post('/time', cors(), async (req, res) => {
 app.post('/time', async (req, res) => {
     try {
-        console.log(req.params);
+        let username = req.params.nom
         if (!req.body) {
             res.send({
                 status: false,
@@ -89,8 +89,7 @@ app.post('/time', async (req, res) => {
                 res.json({
                     "Date": hoy.toLocaleDateString(),
                     "Time": hoy.toLocaleTimeString(),
-                    "User": contingutfitxer.user,
-                    "Nom" : contingutfitxer.nom
+                    "User": username
                 });
 
             } else {
