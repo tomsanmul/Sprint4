@@ -43,7 +43,7 @@ app.get('/user', (req, res) => {
 
 
 
-app.post('/upload', async (req, res) => {
+app.post('/img', async (req, res) => {
     try {
         if (!req.files) {
             res.send({
