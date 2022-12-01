@@ -1,5 +1,6 @@
 const app = require("../config/config.js");
 
+
 function getUser(req, res) {
         try {
             const protocol = req.protocol;
@@ -28,7 +29,7 @@ function upload(req, res){
             });
         } else {
             //Use the name of the input field to retrieve the uploaded file
-            let file = req.files.file;
+            let file = req.files.name;
             if ((file.mimetype == "image/png") || (file.mimetype == "image/jpeg") || (file.mimetype == "image/gif")) {
                 //Use the mv() method to place the file in the upload directory (i.e. "uploads")
                 file.mv('./img/' + file.name);
@@ -57,10 +58,48 @@ function upload(req, res){
 
 }
 
+function time(req, res){
+//app.post('/time', cors(), async (req, res) => {
+    app.post('/time', async (req, res) => {
+        try {
+            let username = req.params.JSON.toString();
+            if (!req.body) {
+                res.send({
+                    status: false,
+                    message: 'No file JSON received'
+                });
+            } else {
+                let file = req.files.file;
+                if (file.mimetype == "application/json") {
+    
+                    const fechaHoy = Date.now();
+                    const hoy = new Date(fechaHoy);
+                    let contingutfitxer = JSON.parse(file.data.toString('ascii'));
+    
+                    res.json({
+                        "Date": hoy.toLocaleDateString(),
+                        "Time": hoy.toLocaleTimeString(),
+                        "User": username
+                    });
+    
+                } else {
+                    res.send({
+                        status: false,
+                        message: 'The uploaded file is not a JSON application'
+                    });
+                }
+            }
+        } catch (err) {
+            res.status(500).send(err);
+        }
+    });
+
+} 
 
 
 
     module.exports = {
         getUser,
-        upload
+        upload,
+        time
       }
