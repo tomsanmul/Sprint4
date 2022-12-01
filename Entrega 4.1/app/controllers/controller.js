@@ -1,4 +1,4 @@
-
+const app = require("../config/config.js");
 
 function getUser(req, res){
     try {
