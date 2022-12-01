@@ -1,5 +1,7 @@
 const app = require("../config/config.js");
+const controllers = require("../controllers/controller.js");
 
+let controller = new controllers();
 
 app.get('/', (req, res) => {
     res.send({
@@ -12,30 +14,23 @@ app.get('/', (req, res) => {
 
 
 app.get('/user', (req, res) => {
-    const {
-        getUser
-     } = require('../controllers/controller.js');
-    getUser(req,res);
+
+     controller.getUser(req,res);
+
 
 });
 
 
 app.post('/upload', async (req, res) => {
 
-    const {
-        upload
-     } = require('../controllers/controller.js');
-     upload(req, res);
+    controller.upload(req,res);
 
 });
 
 
 app.post('/time', async (req, res) => {
 
-    const {
-        time
-     } = require('../controllers/controller.js');
-      time(req, res);
+    controller.time(req,res);
 
 });
 

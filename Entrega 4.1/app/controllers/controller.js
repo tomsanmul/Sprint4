@@ -1,7 +1,10 @@
 const app = require("../config/config.js");
 
 
-function getUser(req, res) {
+class controllers {
+
+
+getUser(req, res) {
         try {
             const protocol = req.protocol;
             const host = req.hostname;
@@ -20,7 +23,7 @@ function getUser(req, res) {
 
     };
 
-function upload(req, res){
+upload(req, res){
     try {
         if (!req.files) {
             res.send({
@@ -29,8 +32,8 @@ function upload(req, res){
             });
         } else {
             //Use the name of the input field to retrieve the uploaded file
-            let file = req.files.name;
-            if ((file.mimetype == "image/png") || (file.mimetype == "image/jpeg") || (file.mimetype == "image/gif")) {
+            let file = req.files;
+            if ((req.files.mimetype == "image/png") || (req.files.mimetype == "image/jpeg") || (req.files.mimetype == "image/gif")) {
                 //Use the mv() method to place the file in the upload directory (i.e. "uploads")
                 file.mv('./img/' + file.name);
                 //send response
@@ -58,7 +61,7 @@ function upload(req, res){
 
 }
 
-function time(req, res){
+time(req, res){
 //app.post('/time', cors(), async (req, res) => {
     app.post('/time', async (req, res) => {
         try {
@@ -98,8 +101,5 @@ function time(req, res){
 
 
 
-    module.exports = {
-        getUser,
-        upload,
-        time
-      }
+}
+module.exports =controllers;
