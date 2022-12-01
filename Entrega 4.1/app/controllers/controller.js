@@ -32,8 +32,8 @@ upload(req, res){
             });
         } else {
             //Use the name of the input field to retrieve the uploaded file
-            let file = req.files;
-            if ((req.files.mimetype == "image/png") || (req.files.mimetype == "image/jpeg") || (req.files.mimetype == "image/gif")) {
+            let file = req.files.file;
+           // if ((req.files.mimetype == "image/png") || (req.files.mimetype == "image/jpeg") || (req.files.mimetype == "image/gif")) {
                 //Use the mv() method to place the file in the upload directory (i.e. "uploads")
                 file.mv('./img/' + file.name);
                 //send response
@@ -46,13 +46,14 @@ upload(req, res){
                         size: file.size
                     }
                 });
-
+/*
             } else {
                 res.send({
                     status: false,
                     message: 'The uploaded file is not a png/jpeg/gif image'
                 });
             }
+*/
 
         }
     } catch (err) {
