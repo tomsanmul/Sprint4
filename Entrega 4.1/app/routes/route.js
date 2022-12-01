@@ -1,8 +1,6 @@
 const app = require("../config/config.js");
 
 
-// ENDPOINTS: 
-
 app.get('/', (req, res) => {
     res.send({
         "Llista d'EndPoints:": "",
@@ -12,11 +10,15 @@ app.get('/', (req, res) => {
     })
 });
 
-/*
+
 app.get('/user', (req, res) => {
-    getUser(req, res);
+    const {
+        getUser
+      } = require('../controllers/controller.js');
+      getUser(req,res);
+
 });
-*/
+
 
 app.post('/upload', async (req, res) => {
     try {
@@ -53,6 +55,12 @@ app.post('/upload', async (req, res) => {
     } catch (err) {
         res.status(500).send(err);
     }
+    /*
+    const {
+        upload
+      } = require('../controllers/controller.js');
+      upload(req, res);
+      */
 });
 
 //app.post('/time', cors(), async (req, res) => {
