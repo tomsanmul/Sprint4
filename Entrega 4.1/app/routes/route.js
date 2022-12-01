@@ -12,11 +12,11 @@ app.get('/', (req, res) => {
     })
 });
 
-
+/*
 app.get('/user', (req, res) => {
     getUser(req, res);
 });
-
+*/
 
 app.post('/upload', async (req, res) => {
     try {
