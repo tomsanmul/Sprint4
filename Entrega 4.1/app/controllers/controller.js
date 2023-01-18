@@ -64,9 +64,9 @@ upload(req, res){
 
 time(req, res){
 //app.post('/time', cors(), async (req, res) => {
-    app.post('/time', async (req, res) => {
+//app.post('/time', async (req, res) => {
         try {
-            let username = req.params.JSON.toString();
+            const {username} = req.body;
             if (!req.body) {
                 res.send({
                     status: false,
@@ -96,9 +96,29 @@ time(req, res){
         } catch (err) {
             res.status(500).send(err);
         }
-    });
 
-} 
+}
+
+
+getPokemon(req, res) {
+    try {
+        const protocol = req.protocol;
+        const host = req.hostname;
+        const url = req.originalUrl;
+        const port = app.get('port');
+        const URL = `${protocol}://${host}:${port}${url}`
+
+        res.json({
+            "Nom": "Tomas",
+            "Edat": "44",
+            "URL": URL
+        });
+    } catch (err) {
+        res.status(500).send(err);
+    }
+
+};
+
 
 
 
