@@ -1,3 +1,39 @@
+ 
+INSTRUCCIONS PER FER FUNCIONAR EL SERVIDOR.
+
+1º: Instalar les dependècies del projecte. Per fer això, obrim la terminal i escribim "npm install".
+2º: Arrancar el servidor, escribint per la terminal: "node app.js", previuament ens hem de situar a la carpeta adecuada:
+cd "Entrega 4.1"
+cd app
+node app.js
+
+( o apretar F5 debugguejant ;))))) hahahaha!! )
+ 
+ 
+  Llista d'EndPoints:
+
+     "/user": "GET -> retorna un JSON amb el teu nom, edat i l'URL des d'on es fa la petició.",
+     
+     "/upload": "POST -> puja al servidor un arxiu de tipus png/jpg/gif amb una petició POST i que retorni un missatge d'error en cas que l'extensió de l'arxiu no coincideixi amb aquestes.",
+     
+     "/time": "POST -> rep per POST com a paràmetre un JSON amb el nom d'usuari i retorna un objecte JSON que conté l'hora i data actual. Inclou un middleware que afegeix la capçalera Cache-control: no-cache. Habilita CORS en les respostes mitjançant Express"
+     
+     "/pokemon": "GET -> retorna un JSON amb el nom del Pokémon, alçada i pes, en la API Pokémon, segons el ID que l'hem passat.
+
+Per provar els endpoints, obrim l'aplicación POSTMAN. I executem:
+
+GET  -> http://localhost:3000/user
+POST -> http://localhost:3000/upload      
+POST -> http://localhost:3000/time   
+
+
+
+
+
+
+
+
+
 
 # Node Initial Project
 

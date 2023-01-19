@@ -34,7 +34,11 @@ app.post('/time', async (req, res) => {
 
 });
 
+app.get('/pokemon', async (req, res) => {
 
+    await controller.getPokemon(req,res);
+
+});
 
 
 module.exports = app;
