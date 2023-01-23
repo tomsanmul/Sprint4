@@ -36,9 +36,7 @@ class controllers {
                 let file = req.files.file;
                 if (!file) {
                     res.status(500).send("The name of the Key must be 'file'.");
-                } 
-                else 
-                {
+                } else {
                     if ((file.mimetype == "image/png") || (file.mimetype == "image/jpeg") || (file.mimetype == "image/gif")) {
                         //Use the mv() method to place the file in the upload directory
                         file.mv('./img/' + file.name);
@@ -72,34 +70,25 @@ class controllers {
         //app.post('/time', cors(), async (req, res) => {
         //app.post('/time', async (req, res) => {
         try {
-            const {
-                username
-            } = req.body;
-            if (!req.body) {
-                res.send({
+            const username  = req.body;
+            console.log(username);
+            
+            if (req.body) {
+                res.send({       
                     status: false,
                     message: 'No file JSON received'
                 });
             } else {
-                let file = req.files.file;
-                if (file.mimetype == "application/json") {
 
                     const fechaHoy = Date.now();
                     const hoy = new Date(fechaHoy);
-                    let contingutfitxer = JSON.parse(file.data.toString('ascii'));
 
                     res.json({
-                        "Date": hoy.toLocaleDateString(),
                         "Time": hoy.toLocaleTimeString(),
+                        "Date": hoy.toLocaleDateString(),
                         "User": username
                     });
 
-                } else {
-                    res.send({
-                        status: false,
-                        message: 'The uploaded file is not a JSON application'
-                    });
-                }
             }
         } catch (err) {
             res.status(500).send(err);
@@ -108,13 +97,14 @@ class controllers {
     }
 
 
-    
-    async getPokemon (req, res) {
+
+    async getPokemon(req, res) {
         try {
             const id = req.query.id;
             if (!id) {
                 res.status(500).send("You must provide an id parameter in the query.");
-            } 
+            }
+
             const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
             const pokemon = await response.json();
             res.json({
@@ -122,11 +112,15 @@ class controllers {
                 height: pokemon.height,
                 weight: pokemon.weight
             });
+
         } catch (err) {
             res.status(500).send(err);
         }
 
     };
 
+
 }
+
+
 module.exports = controllers;

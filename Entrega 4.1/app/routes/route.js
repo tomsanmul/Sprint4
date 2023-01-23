@@ -8,7 +8,8 @@ app.get('/', (req, res) => {
         "Llista d'EndPoints:": "",
         "/user": "GET -> retorna un JSON amb el teu nom, edat i l'URL des d'on es fa la petició.",
         "/upload": "POST -> puja al servidor un arxiu de tipus png/jpg/gif amb una petició POST i que retorni un missatge d'error en cas que l'extensió de l'arxiu no coincideixi amb aquestes.",
-        "/time": "POST -> rep per POST com a paràmetre un JSON amb el nom d'usuari i retorna un objecte JSON que conté l'hora i data actual. Inclou un middleware que afegeix la capçalera Cache-control: no-cache. Habilita CORS en les respostes mitjançant Express"
+        "/time": "POST -> rep per POST com a paràmetre un JSON amb el nom d'usuari i retorna un objecte JSON que conté l'hora i data actual. Inclou un middleware que afegeix la capçalera Cache-control: no-cache. Habilita CORS en les respostes mitjançant Express",
+        "/pokemon": "GET -> retorna un JSON amb el nom del Pokemon, pes i alçada. "
     })
 });
 
