@@ -7,9 +7,6 @@ cd "Entrega 4.1"
 cd app
 node app.js
 
-( o apretar F5 debugguejant ;))))) hahahaha!! )
- 
- 
   Llista d'EndPoints:
 
      "/user": "GET -> retorna un JSON amb el teu nom, edat i l'URL des d'on es fa la petició.",
