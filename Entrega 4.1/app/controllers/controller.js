@@ -44,7 +44,6 @@ class controllers {
                         res.send({
                             status: true,
                             message: 'File is uploaded',
-                            
                             data: {
                                 name: file.name,
                                 mimetype: file.mimetype,
