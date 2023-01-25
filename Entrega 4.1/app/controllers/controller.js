@@ -99,7 +99,7 @@ class controllers {
         try {
             const id = req.params.id;
             if (!id) {
-                res.status(500).send("You must provide an id parameter in the query.");
+                res.status(500).send("You must provide an id parameter. Ex: ../pokemon/10");
             }
             const fetch = require("node-fetch");   
             const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
