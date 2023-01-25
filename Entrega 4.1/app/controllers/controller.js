@@ -1,8 +1,6 @@
 const app = require("../config/config.js");
 
-
 class controllers {
-
 
     getUser(req, res) {
         try {
@@ -97,14 +95,13 @@ class controllers {
     }
 
 
-
     async getPokemon(req, res) {
         try {
-            const id = req.query.id;
+            const id = req.params.id;
             if (!id) {
                 res.status(500).send("You must provide an id parameter in the query.");
             }
-
+            const fetch = require("node-fetch");   
             const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
             const pokemon = await response.json();
             res.json({

@@ -35,7 +35,7 @@ app.post('/time', async (req, res) => {
 
 });
 
-app.get('/pokemon', async (req, res) => {
+app.get('/pokemon/:id', async (req, res) => {
 
     await controller.getPokemon(req,res);
 
