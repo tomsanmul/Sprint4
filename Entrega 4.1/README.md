@@ -25,6 +25,7 @@ Per provar els endpoints, obrim l'aplicación POSTMAN. I executem:
 GET  -> http://localhost:3000/user
 POST -> http://localhost:3000/upload      
 POST -> http://localhost:3000/time   
+GET  -> http://localhost:3000/pokemon/5  
 
 
 
