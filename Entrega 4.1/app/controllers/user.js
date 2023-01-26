@@ -1,4 +1,4 @@
-const app = require("../config/config.js");
+const app = require("../config/config.js"); 
 
 const getUser = (req, res) => {
         try {
