@@ -3,7 +3,6 @@ const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-
 const app = express();
 
 //Configuraciones

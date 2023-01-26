@@ -1,3 +1,4 @@
+const fetch = require("node-fetch");   
 const app = require("../config/config.js");
 
 class controllers {
@@ -107,8 +108,7 @@ class controllers {
                 res.status(500).send("You must provide an id parameter. Ex: ../pokemon/10");
             }
             const fetch = require("node-fetch");   
-            const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-            const pokemon = await response.json();
+            const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then(res => res.json());
             res.json({
                 name: pokemon.name,
                 height: pokemon.height,
