@@ -8,7 +8,6 @@ const time = (req, res) => {
         
         try {
             const username  = req.body;
-            console.log(username);
             
             if (req.body) {
                 res.send({       
