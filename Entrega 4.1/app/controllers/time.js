@@ -5,7 +5,7 @@
 const time = (req, res) => {
         
         try {
-            const {username, password} = req.query;
+            const {username} = req.body;
             const fechaHoy = Date.now();
             const hoy = new Date(fechaHoy);
                     res.json({
