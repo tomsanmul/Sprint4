@@ -11,15 +11,18 @@ node app.js"
 
   Llista d'EndPoints:
 
-     "/user": "GET -> retorna un JSON amb el teu nom, edat i l'URL des d'on es fa la petició.",
+     "/user": GET -> retorna un JSON amb el teu nom, edat i l'URL des d'on es fa la petició.
      
-     "/upload": "POST -> puja al servidor un arxiu de tipus png/jpg/gif amb una petició POST i que retorni un missatge d'error en cas que l'extensió de l'arxiu no coincideixi amb aquestes.",
+     "/upload": POST -> puja al servidor un arxiu de tipus png/jpg/gif amb una petició POST i que retorni un missatge d'error en cas que l'extensió de l'arxiu no coincideixi amb aquestes.
      
-     "/time": "POST -> rep per POST com a paràmetre un JSON amb el nom d'usuari i retorna un objecte JSON que conté l'hora i data actual. Inclou un middleware que afegeix la capçalera Cache-control: no-cache. Habilita CORS en les respostes mitjançant Express"
+     "/time": POST -> rep per POST com a paràmetre un JSON amb el nom d'usuari i retorna un objecte JSON que conté l'hora i data actual. Inclou un middleware que afegeix la capçalera Cache-control: no-cache. Habilita CORS en les respostes mitjançant Express.
+     Afegeix un middleware a l'endpoint anterior que retorni un HTTP Status 401 - Unauthorized si la capçalera de la petició no conté autenticació bàsica (usuari/ària i contrasenya).
      
-     "/pokemon/xx": "GET -> retorna un JSON amb el nom del Pokémon, alçada i pes, en la API Pokémon, segons el ID (/xx) que l'hem passat.
+     "/pokemon/xx": GET -> retorna un JSON amb el nom del Pokémon, alçada i pes, en la API Pokémon, segons el ID (/xx) que l'hem passat.
 
-Per provar els endpoints, obrim l'aplicación POSTMAN. I executem:
+Per provar els endpoints, podem obrim l'aplicació POSTMAN. I executar els EndPoints.
+
+He deixat la Col.lecció de proves de Postman en el fitxer "TEST POSTMAN.postman_collection", es pot obrir directamente aquest fitxer amb Postman per carregar ràpidament els Tests preparats.
 
 GET  -> http://localhost:3000/user
 POST -> http://localhost:3000/upload      
