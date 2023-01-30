@@ -1,3 +1,6 @@
+//Afegeix un endpoint /upload per a pujar al servidor un arxiu de tipus png, jpg o gif amb una petició POST 
+//i que retorni un missatge d'error en cas que l'extensió de l'arxiu no coincideixi amb aquestes.
+
 const upload = (req, res) => {
         try {
             if (!req.files) {
