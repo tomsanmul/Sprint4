@@ -5,25 +5,15 @@
 const time = (req, res) => {
         
         try {
-            const username  = req.body;
-            
-            if (req.body) {
-                res.send({       
-                    status: false,
-                    message: 'No file JSON received'
-                });
-            } else {
-
-                    const fechaHoy = Date.now();
-                    const hoy = new Date(fechaHoy);
-
+            const {username, password} = req.query;
+            const fechaHoy = Date.now();
+            const hoy = new Date(fechaHoy);
                     res.json({
                         "Time": hoy.toLocaleTimeString(),
                         "Date": hoy.toLocaleDateString(),
                         "User": username
                     });
 
-            }
         } catch (err) {
             res.status(500).send(err);
         }
