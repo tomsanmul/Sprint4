@@ -9,7 +9,6 @@ const mdlwCacheControl = require("../middlewares/mdlwCacheControl.js"); //Inclou
 const mdlAccessControl = require("../middlewares/mdlwAcessControl.js"); //Inclou un middleware que afegeixi la capçalera Access-Control-Allow-Origin
 const cors = require('cors');
 
-
 app.get('/user', (req, res) => {
     getUser(req, res);
 });
@@ -25,6 +24,5 @@ app.post('/time', cors(), mdlwCacheControl, mdlAccessControl, (req, res) => {
 app.get('/pokemon/:id', async (req, res) => {
     await getPokemon(req, res);
 });
-
 
 module.exports = app;
