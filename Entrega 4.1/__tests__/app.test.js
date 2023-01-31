@@ -1,12 +1,12 @@
 
-const app = require("../app/routes/routes.js");
+const request = require("supertest");
 
+const baseUrl = 'http://localhost:3000/';
 
-test('Comprovar endpoint getUser', () => {
-  request(app)
-  .get('./getUser')  
-  .expect('Content-Type', /json/)
-  .expect(201)
-  .end((err, res) => {t.falsy(err, 'should not error')})
-
-  })
+describe('Todos endpoint', () => {
+	it('should return a 200 status code', async () => {
+		const response = await request(baseUrl)
+			.get('/user');
+		expect(response.statusCode).toBe(200);
+	});
+});
