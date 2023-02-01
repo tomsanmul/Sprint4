@@ -1,5 +1,10 @@
 //TESTS PER PROVAR LA API REST AMB SUPERTEST. Instalar previament les dependecies de SUPERTEST (npm i supertest).
 
+//Abans de provar aquesta pàgina de Test  (npx jest app.test.js) , desde la terminal, 
+//s'ha d'arrancar el servidor desde un altre terminal: D:\Github\Nodejs\Sprint4\Entrega 4.1\app> node app.js  
+//Un cop arrancat el servidor app.js, es podrà executar els tests (npx jest app.test.js)
+
+
 const request = require("supertest");
 
 const server = 'http://localhost:3000';
