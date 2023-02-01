@@ -1,13 +1,14 @@
 //TESTS PER PROVAR LA API REST AMB SUPERTEST. Instalar previament les dependecies de SUPERTEST (npm i supertest).
 
 const request = require("supertest");
+
 const server = 'http://localhost:3000';
 
 //----------------------------------------------------------------------------------------
 ///TEST per verificar que la resposta del Endpoint /User es 200 (OK) i rep les capçeleres 'Content-Type', 'application/json; charset=utf-8'
 
 describe('EndPoint /user', () => {
-	it('Espera devolver 200 status code i la capçalera Content-Type', async () => {
+	it('Espera retornar statuscode (200) si la capçalera Content-Type', async () => {
 		request(server)
 			.get('/user')
 			.expect(200)
@@ -30,7 +31,7 @@ const expectedResultUser = {
 
 
 describe('EndPoint /user', () => {
-	it('Espera devolver el JSON de arriba', async () => {
+	it('Espera retornar el JSON del user', async () => {
 		request(server)
 			.get('/user')
 			.expect(expectedResultUser)
@@ -70,11 +71,40 @@ describe('EndPoint /pokemon', () => {
 
 //////TEST per verificar el funcionament de l'EndPoint Upload
 
+const resultUploadOK = 	{
+		"status": true,
+		"message": "File is uploaded",
+		"data": {
+			"name": "image.jpg",
+			"mimetype": "image/jpeg",
+			"size": 52471
+		}
+	}
+
+const resultUploadNoFile = 	{
+    "status": false,
+    "message": "You have not selected any files to upload"
+}
+
 describe('EndPoint /upload', () => {
-	it('Espero poder pujar un arxiu de imatge OK ', async () => {
+	it('Espero poder pujar un arxiu de imatge JPG OK ', async () => {
 		request(server)
 			.post('/upload')
+			.attach('file', './app/img/image.jpg')
 			.expect(200)
+			.expect(resultUploadOK)
+			.end(function (err, res) {
+				if (err) throw err;
+			});
+
+	});
+
+	it('Espero poder pujar un arxiu de imatge JPG OK ', async () => {
+		request(server)
+			.post('/upload')
+			.attach('file', '')
+			.expect(200)
+			.expect(resultUploadNoFile)
 			.end(function (err, res) {
 				if (err) throw err;
 			});
@@ -96,15 +126,16 @@ describe('EndPoint /Time', () => {
 
 	});
 
-	/*
+
 	const data = {
 		"username" : "tomas",
 		"password" : "123123"
 	} 
+
 	it('Espero que retorni 200 si les credencials que li passo son correctes.', async () => {
 		request(server)
 			.post('/time')
-			.auth("tomas","123123","basic")
+			.auth('tomas', '123123')
 			.send(data)
 			.set('Accept', 'application/json')
             .expect('Content-Type', /json/)
@@ -113,5 +144,5 @@ describe('EndPoint /Time', () => {
 				if (err) throw err;
 			});
 	});
-	*/
+
 });
