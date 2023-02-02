@@ -21,7 +21,6 @@ node app.js"
      "/pokemon/xx": GET -> retorna un JSON amb el nom del Pokémon, alçada i pes, en la API Pokémon, segons el ID (/xx) que l'hem passat.
 
 Per provar els endpoints, podem obrim l'aplicació POSTMAN. I executar els EndPoints.
-
 He deixat la Col.lecció de proves de Postman en el fitxer "TEST POSTMAN.postman_collection", es pot obrir directamente aquest fitxer amb Postman per carregar ràpidament els Tests preparats.
 
 GET  -> http://localhost:3000/user
@@ -29,7 +28,9 @@ POST -> http://localhost:3000/upload
 POST -> http://localhost:3000/time   
 GET  -> http://localhost:3000/pokemon/5  
 
+I també es poden executar els TESTS, dins de la carpeta __tests__  , obrim una terminal i executem:
 
+npx jest app.test.js
 
 
 
