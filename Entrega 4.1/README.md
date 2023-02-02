@@ -1,4 +1,5 @@
- 
+Entrega 4.1: Node REST Server:  Crearem una API REST de resposta ràpida. 
+
 INSTRUCCIONS PER FER FUNCIONAR EL SERVIDOR.
 
 1º: Instalar les dependècies del projecte. Per fer això, obrim la terminal, ens ubiquem dins de la carpeta Entrega 4.1\app i escribim:
@@ -35,7 +36,7 @@ npx jest app.test.js
 
 
 
-
+-----------------------------------------------------------------------------------------------------
 
 
 
