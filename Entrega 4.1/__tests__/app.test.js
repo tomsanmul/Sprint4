@@ -95,7 +95,7 @@ describe('EndPoint /upload', () => {
 	it('Espero poder pujar un arxiu de imatge JPG OK ', async () => {
 		request(server)
 			.post('/upload')
-			.attach('file', './app/img/image.jpg')
+			.attach('file', '../app/img/image.jpg')
 			.expect(200)
 			.expect(resultUploadOK)
 			.end(function (err, res) {
