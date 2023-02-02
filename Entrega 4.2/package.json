@@ -1,0 +1,12 @@
+{
+  "name": "entrega-4.2",
+  "version": "1.0.0",
+  "description": "Entrega 4.2: Node REST + DB + JWT",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
