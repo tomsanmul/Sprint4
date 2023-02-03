@@ -25,7 +25,6 @@ app.get('/pokemon/:id', async (req, res) => {
     await getPokemon(req, res);
 });
 
-
 app.get('/', (req, res) => {
     res.send({
         "Llista d'EndPoints:" : "",
