@@ -2,6 +2,7 @@
 //i retorni el nom del Pokémon, la seva alçada i el seu pes.
 
 const fetch = require("node-fetch"); 
+const { options } = require("../config/config");
 
 const getPokemon = async (req, res) => { 
     try {
